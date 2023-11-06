@@ -69,6 +69,11 @@ export default function Header() {
     }
   );
 
+  const userIconClasses = clsx("text-slate-600", "flex", {
+    "items-center": !isExpanded,
+    "items-start": isExpanded,
+  });
+
   return (
     <>
       <header className="flex border-b bg-white z-50 fixed w-full" ref={ref}>
@@ -77,7 +82,7 @@ export default function Header() {
             <Image src="/images/logo.png" height={50} width={172} alt="Logo" />
           </div>
           {isExpanded ? (
-            <SearchBar />
+            <SearchBar toggleExpanded={toggleExpanded} />
           ) : (
             <button onClick={toggleExpanded} className={searchContainerClasses}>
               <div className="input flex border-none items-center px-4">
@@ -94,7 +99,7 @@ export default function Header() {
               </div>
             </button>
           )}
-          <div className="text-slate-600 flex items-center">
+          <div className={userIconClasses}>
             <Image src="/images/user.svg" height={30} width={30} alt="User" />
           </div>
         </div>
