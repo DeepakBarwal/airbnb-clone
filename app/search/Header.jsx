@@ -6,10 +6,12 @@ import clsx from "clsx";
 import { useClickAway } from "react-use";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useSearchStore, initialState } from "@/store/store";
 
 export default function Header() {
   const [isExpanded, setIsExpanded] = useState(false);
   const ref = useRef(null);
+  const searchStore = useSearchStore((state) => state);
 
   const toggleExpanded = () => {
     setIsExpanded((prevIsExpanded) => !prevIsExpanded);
@@ -148,13 +150,24 @@ export default function Header() {
               className={searchContainerClasses}
             >
               <div className="input flex border-none items-center px-4">
-                <p>Anywhere</p>
+                <p>
+                  {searchStore.location !== ""
+                    ? searchStore.location
+                    : "Anywhere"}
+                </p>
               </div>
               <div className="input flex border-none items-center px-4">
-                <p>Any Date</p>
+                <p>
+                  {searchStore.dates[0] !== initialState.dates[0] &&
+                  searchStore.dates[1] !== initialState.dates[1]
+                    ? `${searchStore.dates[0].toDateString()} - ${searchStore.dates[1].toDateString()}`
+                    : "Any Date"}
+                </p>
               </div>
               <div className="input flex border-none items-center px-4">
-                <p>Add Guests</p>
+                <p>
+                  {searchStore.guests > 0 ? searchStore.guests : "Add Guests"}
+                </p>
               </div>
               <div className="search-btn px-4 rounded-full bg-primary h-10 w-10 relative">
                 <MagnifyingGlassIcon className="w-5 h-4 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
