@@ -1,9 +1,9 @@
 import Link from "next/link";
+import { prisma } from "@/db/prisma";
 import ResultsList from "./results/components/ResultsList";
 
 export default async function Page() {
-  const res = await fetch("http://localhost:3000/api/search");
-  const data = await res.json();
+  const res = await prisma.listing.findMany();
 
   return (
     <>
@@ -15,7 +15,7 @@ export default async function Page() {
           Browse Stays
         </Link>
       </div>
-      <ResultsList data={data} />
+      <ResultsList data={res} />
     </>
   );
 }
