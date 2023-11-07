@@ -4,7 +4,7 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker } from "react-date-range";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import { useSearchStore } from "@/store/store";
+import { useSearchStore } from "../../../store/store";
 import { useRouter } from "next/navigation";
 
 const SearchBar = ({ toggleExpanded }) => {

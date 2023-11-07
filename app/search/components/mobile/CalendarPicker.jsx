@@ -1,5 +1,5 @@
 import { DateRange } from "react-date-range";
-import { useSearchStore } from "@/store/store";
+import { useSearchStore } from "../../../../store/store";
 import { useState } from "react";
 
 const CalendarPicker = () => {

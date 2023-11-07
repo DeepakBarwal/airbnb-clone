@@ -4,7 +4,7 @@ import { useState } from "react";
 import DestinationInput from "./mobile/DestinationInput";
 import CalendarPicker from "./mobile/CalendarPicker";
 import Counter from "./Counter";
-import { useSearchStore } from "@/store/store";
+import { useSearchStore } from "../../../store/store";
 
 const MobileMenu = [
   { label: "Where?", content: <DestinationInput /> },

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { prisma } from "@/db/prisma";
+import { prisma } from "../../db/prisma";
 import ResultsList from "./results/components/ResultsList";
 
 export default async function Page() {

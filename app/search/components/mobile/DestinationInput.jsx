@@ -1,5 +1,5 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import { useSearchStore } from "@/store/store";
+import { useSearchStore } from "../../../../store/store";
 
 const DestinationInput = () => {
   const locationInput = useSearchStore((state) => state.location);

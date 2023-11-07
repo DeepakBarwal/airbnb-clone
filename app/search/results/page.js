@@ -1,12 +1,12 @@
 import ResultsList from "./components/ResultsList";
+import { prisma } from "../../../db/prisma";
 
 export default async function Page() {
-  const res = await fetch("http://localhost:3000/api/search");
-  const data = await res.json();
+  const res = await prisma.listing.findMany();
 
   return (
     <>
-      <ResultsList data={data} />
+      <ResultsList data={res} />
     </>
   );
 }

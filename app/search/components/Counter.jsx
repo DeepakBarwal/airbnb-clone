@@ -1,4 +1,4 @@
-import { useSearchStore } from "@/store/store";
+import { useSearchStore } from "../../../store/store";
 
 const CountIcon = ({ icon, onClick }) => {
   return (

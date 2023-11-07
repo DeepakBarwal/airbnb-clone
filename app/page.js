@@ -1,14 +1,17 @@
-import { prisma } from "@/db/prisma";
+import { prisma } from "../db/prisma";
+import { UserButton } from "@clerk/nextjs";
 
 export default async function Home() {
   const users = await prisma.user.findMany();
-  console.log(users);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {/* {users.map((user) => (
-        <p>{user.listing[0]}</p>
-      ))} */}
+      <UserButton afterSignOutUrl="/" />
+      {users.map((user, index) => (
+        <p className="text-slate-900" key={index}>
+          {user.name}
+        </p>
+      ))}
     </main>
   );
 }
