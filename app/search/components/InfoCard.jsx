@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { HeartIcon as FilledHeartIcon } from "@heroicons/react/24/solid";
 import { StarIcon } from "@heroicons/react/24/solid";
@@ -66,34 +67,36 @@ const InfoCard = ({ listing }) => {
   };
 
   return (
-    <div className="md:max-w-md mx-auto shadow-md rounded-lg overflow-hidden relative">
-      <img
-        src={listing.image}
-        alt={listing.name}
-        className="object-cover transition-transform duration-300 transform hover:scale-110" // w-full h-48
-      />
-      <div className="p-4">
-        <div className="flex items-center justify-between mb-2">
-          <h3 className="text-xl font-semibold mb-2">{listing.name}</h3>
-          <div className="flex items-center">
-            <StarIcon className="h-5 w-5 text-yellow-500 mr-1" />
-            <span className="text-gray-800">{listing.rating}</span>
+    <Link href={`/search/${listing.id}`}>
+      <div className="md:max-w-md mx-auto shadow-md rounded-lg overflow-hidden relative">
+        <img
+          src={listing.image}
+          alt={listing.name}
+          className="object-cover transition-transform duration-300 transform hover:scale-110" // w-full h-48
+        />
+        <div className="p-4">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-xl font-semibold mb-2">{listing.name}</h3>
+            <div className="flex items-center">
+              <StarIcon className="h-5 w-5 text-yellow-500 mr-1" />
+              <span className="text-gray-800">{listing.rating}</span>
+            </div>
+          </div>
+          <p className="text-gray-600 mb-6">{listing.description}</p>
+          <button
+            className="absolute bottom-4 right-4 p-2 z-30"
+            onClick={handleFavoriteUpdate}
+          >
+            <span id={`reward_${listing.id}`}>
+              <HeartIcon className="w-5 h-5 text-primary" />
+            </span>
+          </button>
+          <div ref={scope} className="absolute bottom-4 right-4 p-2 -z-30">
+            <FilledHeartIcon className="w-5 h-5 text-primary scale-0" />
           </div>
         </div>
-        <p className="text-gray-600 mb-6">{listing.description}</p>
-        <button
-          className="absolute bottom-4 right-4 p-2 z-30"
-          onClick={handleFavoriteUpdate}
-        >
-          <span id={`reward_${listing.id}`}>
-            <HeartIcon className="w-5 h-5 text-primary" />
-          </span>
-        </button>
-        <div ref={scope} className="absolute bottom-4 right-4 p-2 -z-30">
-          <FilledHeartIcon className="w-5 h-5 text-primary scale-0" />
-        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

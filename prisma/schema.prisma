@@ -28,4 +28,27 @@ model Listing {
   location        String?
   image           String?
   rating          Float?
+  availabilities  Availability[]
+  bookings        Booking[]
+}
+
+model Availability {
+  id  Int @id @default(autoincrement())
+  listingId Int
+  listing Listing @relation(fields: [listingId], references: [id])
+  startDate DateTime
+  endDate DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model Booking {
+  id  Int @id @default(autoincrement())
+  listingId Int
+  listing Listing @relation(fields: [listingId], references: [id])
+  startDate DateTime
+  endDate DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId String
 }

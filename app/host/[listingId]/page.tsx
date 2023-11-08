@@ -2,6 +2,7 @@ import { prisma } from "../../../db/prisma";
 import { auth } from "@clerk/nextjs";
 import { notFound } from "next/navigation";
 import { StarIcon, MapPinIcon } from "@heroicons/react/24/solid";
+import Calendar from "./components/Calendar";
 
 export default async function Page({
   params,
@@ -10,6 +11,10 @@ export default async function Page({
 }) {
   const listing = await prisma.listing.findUnique({
     where: { id: parseInt(params.listingId) },
+    include: {
+      availabilities: true,
+      bookings: true,
+    },
   });
 
   const userId = auth().userId;
@@ -40,6 +45,7 @@ export default async function Page({
         <MapPinIcon className="h-5 w-5 text-gray-800 mr-1" />
         <span className="text-gray-800">{listing.location}</span>
       </div>
+      <Calendar listing={listing} />
     </div>
   );
 }
