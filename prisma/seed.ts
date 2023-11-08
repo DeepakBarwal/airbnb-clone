@@ -9,7 +9,7 @@ type Listing = {
   price: number;
   rating: number;
   published: boolean;
-  ownerId: number;
+  ownerId: string;
 };
 
 const prisma = new PrismaClient();

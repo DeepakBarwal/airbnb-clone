@@ -14,7 +14,7 @@ model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
   name  String?
-  listings Listing[]
+  // listings Listing[]
 }
 
 model Listing {
@@ -22,8 +22,8 @@ model Listing {
   name           String
   description     String?
   published       Boolean   @default(false)
-  owner           User      @relation(fields: [ownerId], references: [id])
-  ownerId         Int
+  // owner           User      @relation(fields: [ownerId], references: [id])
+  ownerId         String
   price           Float     @default(0)
   location        String?
   image           String?

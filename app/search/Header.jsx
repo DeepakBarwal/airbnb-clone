@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { useSearchStore, initialState } from "../../store/store";
 import MobileNav from "./components/MobileNav";
 import { AuthButton } from "../auth/index";
+import Link from "next/link";
 
 export default function Header() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -177,9 +178,12 @@ export default function Header() {
           <div className="md:hidden flex-grow">
             <MobileNav />
           </div>
-          <button className="text-slate-800 p-4 flex items-center m-2 hover:bg-slate-200 rounded-full">
+          <Link
+            href="/host/create-listing"
+            className="text-slate-800 p-4 flex items-center m-2 hover:bg-slate-200 rounded-full"
+          >
             Airbnb - Your Home
-          </button>
+          </Link>
           <div className={userIconClasses}>
             {/* <Image src="/images/user.svg" height={30} width={30} alt="User" /> */}
             <AuthButton />

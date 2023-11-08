@@ -6,12 +6,12 @@ type Listing = {
   price: number;
   rating: number;
   published: boolean;
-  ownerId: number;
+  ownerId: String;
 };
 
 export const data: Listing[] = [
   {
-    id: 1,
+    id: 10000,
     name: "Cozy Cottage",
     description: "A charming cottage in a peaceful location.",
     image:
@@ -19,10 +19,10 @@ export const data: Listing[] = [
     price: 100,
     rating: 4.5,
     published: true,
-    ownerId: 1,
+    ownerId: "1",
   },
   {
-    id: 2,
+    id: 20000,
     name: "Luxury Villa",
     description: "A luxurious villa with breathtaking views.",
     image:
@@ -30,10 +30,10 @@ export const data: Listing[] = [
     price: 300,
     rating: 5,
     published: true,
-    ownerId: 1,
+    ownerId: "1",
   },
   {
-    id: 3,
+    id: 30000,
     name: "Seaside Retreat",
     description: "An idyllic seaside retreat for a relaxing vacation.",
     image:
@@ -41,10 +41,10 @@ export const data: Listing[] = [
     price: 150,
     rating: 4.8,
     published: true,
-    ownerId: 1,
+    ownerId: "1",
   },
   {
-    id: 4,
+    id: 40000,
     name: "Mountain Cabin",
     description: "A cozy cabin nestled in the mountains.",
     image:
@@ -52,10 +52,10 @@ export const data: Listing[] = [
     price: 120,
     rating: 4.2,
     published: true,
-    ownerId: 1,
+    ownerId: "1",
   },
   {
-    id: 5,
+    id: 50000,
     name: "City Apartment",
     description: "A modern apartment in the heart of the city.",
     image:
@@ -63,10 +63,10 @@ export const data: Listing[] = [
     price: 200,
     rating: 4.7,
     published: true,
-    ownerId: 1,
+    ownerId: "1",
   },
   {
-    id: 6,
+    id: 60000,
     name: "Rustic Farmhouse",
     description: "A charming farmhouse surrounded by nature.",
     image:
@@ -74,6 +74,6 @@ export const data: Listing[] = [
     price: 180,
     rating: 4.4,
     published: true,
-    ownerId: 1,
+    ownerId: "1",
   },
 ];
