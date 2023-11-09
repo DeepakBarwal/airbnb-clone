@@ -16,7 +16,10 @@ export default function Page() {
           >
             Add Another
           </Link>
-          <Link href="/" className="text-primary px-4 p-4 mt-2 underline">
+          <Link
+            href="/host/listings"
+            className="text-primary px-4 p-4 mt-2 underline"
+          >
             Browse Your Listings
           </Link>
         </div>

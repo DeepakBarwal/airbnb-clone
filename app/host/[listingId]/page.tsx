@@ -6,6 +6,7 @@ import Calendar from "./components/Calendar";
 import ListingImage from "./components/ListingImage";
 import { revalidatePath } from "next/cache";
 import ImageUploader from "../components/ImageUploader";
+import ListingDelete from "../components/ListingDelete";
 
 export default async function Page({
   params,
@@ -67,7 +68,12 @@ export default async function Page({
           <MapPinIcon className="h-5 w-5 text-gray-800 mr-1" />
           <span className="text-gray-800">{listing.location}</span>
         </div>
-        <Calendar listing={listing} />
+        <div className="flex justify-between">
+          <Calendar listing={listing} />
+          <div className="self-end">
+            <ListingDelete listingId={listing.id} />
+          </div>
+        </div>
       </div>
     </>
   );

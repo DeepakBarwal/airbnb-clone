@@ -13,5 +13,4 @@ export default async function createUserBooking(
   });
 
   revalidatePath("/search");
-  console.log(createBooking);
 }

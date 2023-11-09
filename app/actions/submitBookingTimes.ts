@@ -22,7 +22,7 @@ const submitBookingTimes = async (
     },
   });
   if (result) {
-    revalidatePath("/host/");
+    revalidatePath("/host");
   }
   console.log(result);
 };
