@@ -3,6 +3,8 @@ import { auth } from "@clerk/nextjs";
 import { notFound } from "next/navigation";
 import { StarIcon, MapPinIcon } from "@heroicons/react/24/solid";
 import Calendar from "./components/Calendar";
+import ListingImage from "./components/ListingImage";
+import { revalidatePath } from "next/cache";
 
 export default async function Page({
   params,
@@ -19,6 +21,19 @@ export default async function Page({
 
   const userId = auth().userId;
 
+  const saveFileUrl = async (fileUrl: string) => {
+    "use server";
+    await prisma.listing.update({
+      where: {
+        id: listing.id,
+      },
+      data: {
+        image: fileUrl,
+      },
+    });
+    revalidatePath("/host");
+  };
+
   if (listing.ownerId !== userId) {
     notFound();
   }
@@ -27,10 +42,10 @@ export default async function Page({
     <div>
       <h1>{listing.name}</h1>
       {listing.image ? (
-        <img
-          src={listing.image}
-          alt={listing.name}
-          className="w-full h-48 object-cover rounded-lg"
+        <ListingImage
+          imgUrl={listing.image}
+          imgAlt={listing.name}
+          saveFileUrl={saveFileUrl}
         />
       ) : null}
       <p>{listing.description}</p>
