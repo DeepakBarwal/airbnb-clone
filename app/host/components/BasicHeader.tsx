@@ -1,7 +1,9 @@
 "use client";
+import Link from "next/link";
 import clsx from "clsx";
 import Image from "next/image";
 import { AuthButton } from "../../auth/index";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 
 const BasicHeader = () => {
   const headerContainerClasses = clsx(
@@ -29,6 +31,25 @@ const BasicHeader = () => {
           <Image src="/images/logo.png" height={50} width={172} alt="Logo" />
         </div>
         <div className={userIconClasses}>
+          <div className="dropdown dropdown-end">
+            <label
+              tabIndex={0}
+              className="flex p-2 border bg-white shadow-sm hover:shadow-md rounded-full mr-3 cursor-pointer"
+            >
+              <Bars3Icon className="h-6 w-6 text-slate-600 mx-auto" />
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <Link href={"/trips"}>My Trips</Link>
+              </li>
+              <li>
+                <Link href={"/host/listings"}>My Listings</Link>
+              </li>
+            </ul>
+          </div>
           <AuthButton />
         </div>
       </div>
