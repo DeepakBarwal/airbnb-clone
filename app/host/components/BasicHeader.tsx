@@ -19,15 +19,15 @@ const BasicHeader = () => {
 
   const userIconClasses = clsx(
     "text-slate-600",
-    "md:flex",
-    "hidden",
-    "items-center"
+    "flex",
+    "items-center",
+    "mr-3"
   );
 
   return (
     <header className="flex border-b bg-white z-50 fixed w-full">
       <div className={headerContainerClasses}>
-        <div className="text-red-500 hidden md:flex">
+        <div className="text-red-500 md:flex">
           <Image src="/images/logo.png" height={50} width={172} alt="Logo" />
         </div>
         <div className={userIconClasses}>
